@@ -1,23 +1,94 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+
+*
+{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #BDB9BA;
+}
+
+#topspacer
+{
+  min-height: 10%;
+  height: 50px;
+  margin: 1px;
+  width: 100%;
+}
+
+.homebuttons
+{
+  background-color: #40E365;
+  width: 150px;
+  height: 50px;
+  margin-top: 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  box-shadow: 4px 4px 1px #999;
+  border: none;
+}
+
+.gamebuttons
+{
+  background-color: #40E365;
+  width: 200px;
+  height: 50px;
+  margin-top: 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 17px;
+  box-shadow: 4px 4px 1px #999;
+  border: none;
+  border-radius: 10px;
+}
+
+.header
+{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  min-height: 20%;
+  background-color: #211E01;
+  padding: 10px;
+  width: 90%;
+}
+
+.toprowmain
+{
+  background-color: #211E01;
+  padding: 50px;
+  box-shadow: 4px 4px 1px #999;
+}
+
+.toprow
+{
+  background-color: #211E01;
+  padding: 10px;
+  box-shadow: 4px 4px 1px #999;
+}
+
 .tile{
   display:block;
   float:left;
-  width:48px;
-  height:48px;
-  line-height:48px;
+  width:54px;
+  height:54px;
+  line-height:54px;
   border: 1px #d6bc83 solid;
   margin:3px;
-  text-indent:15px;
-  border-radius: 2px;
+  text-indent:18px;
+  border-radius: 15px;
   color:#000;
   text-shadow: -1px -1px 1px rgb(40,40,40);
   font-family: "NewsGoth Cn BT", Optima-Thin, "MS Gothic";
-  font-size:36px;
+  font-size:40px;
   background-image: -webkit-gradient(
     linear,
     right bottom,
     left top,
-    color-stop(0.5, rgb(222,196,139)),
-    color-stop(0.7, rgb(230,204,147))
+    color-stop(0.5, rgb(222,204,202)),
+    color-stop(0.7, rgb(230,210,230))
   );
   background-image: -moz-linear-gradient(
     right bottom,
@@ -26,5 +97,103 @@
   );
   -moz-box-shadow:  0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
   -webkit-box-shadow: 0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
-  box-shadow: 0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
+  box-shadow: 0 1px 0 #757573, 1px 2px 0 #757573, 2px 3px 1px #757573;
+}
+
+
+.tileheader
+{
+  margin: 50px auto 50px auto;
+}
+
+#formin
+{
+  background-color: #598BF7;
+  padding: 15px;
+  font-size: 20px;
+}
+
+input.formback
+{
+  background-color: #C7E2F7;
+  width: 80%;
+}
+
+.cancel
+{
+  background-color: #FF6813;
+  width: 100px;
+  height: 35px;
+  margin-top: 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  box-shadow: 2px 2px 1px #999;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.submit
+{
+  background-color: #40E365;
+  width: 100px;
+  height: 35px;
+  margin-top: 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  box-shadow: 2px 2px 1px #999;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+
+}
+
+.logout
+{
+  margin-top: 10px;
+  display: inline-block;
+  float: right;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+#cube
+{
+  border-radius: 15px;
+  border: none;
+  background-color: #211E01;
+
+}
+
+#cubeblank
+{
+  border-radius: 15px;
+  border: none;
+  background-color: #211E01;
+}
+
+#start
+{
+  float: right;
+  display: inline-block;
+}
+
+#pause
+{
+  float: right;
+  display: inline-block;
+}
+
+.hide
+{
+  display: none;
 }

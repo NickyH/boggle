@@ -1,12 +1,15 @@
-.row
-  .large-3.columns
-  .large-6.columns
-    = form_tag '/login' do
-      = label_tag :email
-      = text_field_tag :email, nil, :autofocus => true
-      = label_tag :password
-      = password_field_tag :password
-      = link_to('Cancel', '#', :'data-clear-form' => true, id: 'cancel', :class =>  'button radius tiny')
-      = submit_tag 'Login', :class =>  'button radius tiny'
-  .large-3.columns
+#formin
+  .row
+    .large-4.columns
+    .large-4.columns.large-centered
+      = form_tag '/login' do
+        = label_tag :email
+        = text_field_tag :email, nil, :autofocus => true, :class => 'formback'
+        = label_tag :password
+        = password_field_tag :password, nil, :class => 'formback'
+        = link_to('Cancel', '#', :'data-clear-form' => true, id: 'cancel', :class =>  'button cancel')
+        = submit_tag 'Login', :class =>  'button submit'
+    .large-4.columns
+
+
 

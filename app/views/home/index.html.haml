@@ -1,16 +1,60 @@
 .row#auth_token{:'data-auth-token' => form_authenticity_token}
 
-  #form
+#topspacer.hide-for-small
 
+.row.toprowmain.header
+  .large-3.columns
+  .large-6.small-6.columns.large-centered.tileer
+    .tile= 'B'
+    .tile= 'O'
+    .tile= 'G'
+    .tile= 'G'
+    .tile= 'L'
+    .tile= 'E'
+    .tile= ''
+    .tile= 'R'
+    .tile= 'U'
+    .tile= 'L'
+    .tile= 'E'
+    .tile= 'S'
+    .tile= ''
+    .tile= 'R'
+    .tile= 'E'
+    .tile= 'G'
+    .tile= 'I'
+    .tile= 'S'
+    .tile= 'T'
+    .tile= 'E'
+    .tile= 'R'
+    .tile= ''
+    .tile= ''
+    .tile= ''
+
+
+  .large-3.columns
+
+
+
+  .large-2.columns
 
 .row
-  .small-2.columns
-  .small-8.columns
-  #homebuttons
-    - if @auth.nil?
-      = link_to('Register', new_user_path, :remote => true, :class => 'button radius tiny')
-      = link_to('Login', login_path, :remote => true, :class => 'button radius tiny')
-  .small-2.columns
+  .large-12.small-12.columns
+    .row
+      - if @auth.nil?
+        .large-4.columns
+        .large-4.columns.large-centered
+          = link_to('Register', new_user_path, :remote => true, :class => 'button homebuttons')
+          = link_to('Login', login_path, :remote => true, :class => 'button homebuttons')
+        .large-4.columns
+
+      - else
+        .small-4.columns.large-centered
+          = link_to('Welcome back' + @auth.username, games_path, :class => 'button radius tiny')
+        .small-4.columns.large-centered
+          = link_to('Logout', login_path, :method => 'post', :class => 'button radius tiny')
+
+.row
+  #form
 
 
   #nav
@@ -20,10 +64,5 @@
   - if @auth.nil?
     #drop.f-dropdown.content
       = render :partial => 'session/form'
-
-
-  #homepage
-    #homepage-text-welcome= 'welcome to'
-    #homepage-text= 'WORDY'
 
 

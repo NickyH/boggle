@@ -1,6 +1,30 @@
-#username= link_to(@auth.username + 'logout', '/login', :method => 'post')
+.row.toprow.header
+  .large-12.columns
+    - if !@auth.nil?
+      #username= link_to(@auth.username + ' | logout', '/login', :method => 'post', :class => 'logout')
+  .large-12.columns
+    - if @auth.games
+      %table
+        %th Game
+        %th Score
+        %th Best Word
+        - @auth.games.each do |game|
+          %tr
+            %td= game.name
+            %td= game.score
+            %td= game.best_word
 
-= link_to('New Game', new_game_form_path, :class => 'button tiny radius success', :remote => true)
 
 
-#form
+.row
+  .large-12.small-12.columns
+    .row
+      - if !@auth.nil?
+        .large-4.columns
+          #username= link_to(@auth.username + ' | logout', '/login', :method => 'post', :class => 'logout')
+        .large-4.columns.large-centered
+          = link_to('Enter Game', new_game_form_path, :class => 'button gamebuttons', :remote => true)
+
+
+.row
+  #form
