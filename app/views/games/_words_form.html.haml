@@ -1,0 +1,3 @@
+= form_tag '/add_word', :remote => true do
+  .word_enter= text_field_tag 'words', nil, :autofocus => true
+  = submit_tag 'Enter'

@@ -1,0 +1,29 @@
+.row#auth_token{:'data-auth-token' => form_authenticity_token}
+
+  #form
+
+
+.row
+  .small-2.columns
+  .small-8.columns
+  #homebuttons
+    - if @auth.nil?
+      = link_to('Register', new_user_path, :remote => true, :class => 'button radius tiny')
+      = link_to('Login', login_path, :remote => true, :class => 'button radius tiny')
+  .small-2.columns
+
+
+  #nav
+    = render :partial => 'layouts/nav'
+
+
+  - if @auth.nil?
+    #drop.f-dropdown.content
+      = render :partial => 'session/form'
+
+
+  #homepage
+    #homepage-text-welcome= 'welcome to'
+    #homepage-text= 'WORDY'
+
+

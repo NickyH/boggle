@@ -1,0 +1,3 @@
+<% if @auth.present? %>
+<li><%= link_to(@auth.email + ' logout', login_path, :method => :delete, :confirm => "Logout?") %></li>
+<% end %>

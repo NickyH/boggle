@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<html>
+<head>
+  <title>Words</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id='home-background'>
+<div id = 'body'><%= yield %></div>
+</div>
+<div id='footer'><%= render :partial => 'layouts/footer' %></div>
+
+
+  <script>
+  $(document).foundation();
+  </script>
+
+</body>
+</html>

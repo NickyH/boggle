@@ -1,0 +1,12 @@
+#words_table
+  = render 'games/words_form'
+
+#words_list
+  = render 'games/list'
+
+
+/ %h1= 'form'
+/ = form_tag '/answers', :remote => true do
+/   = label_tag 'words'
+/   = text_field_tag 'words', nil, :autofocus => true
+/   = submit_tag 'Add Word'
