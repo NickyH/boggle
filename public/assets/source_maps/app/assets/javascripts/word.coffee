@@ -1,11 +1,10 @@
-seconds = 180
+seconds = 10
 window.app =
   pusher: null
   channel: null
   selected_channel: null
   document_ready: ->
     app.token = $('#auth_token').data('auth-token')
-    app.pusher = new Pusher('4265009735b51af74a68')
     $('#form').on('click', 'a[data-clear-form]', app.clear_form)
     $('.word_enter').on('keypress', 'text', app.word_enter)
 
@@ -28,26 +27,27 @@ window.app =
   bind_events: ->
     channel.bind('select_channel', app.select_channel)
 
-  select_channel: (name) ->
-    console.log(name)
-    app.pusher.unsubscribe(app.selected_channel) if app.selected_channel
-    app.pusher.subscribe(name)
-    app.selected_channel = name
-    bind_events()
 
   start_timer: ->
-    $('#start').hide()
-    $('#pause').show()
-    setInterval ( -> app.show_time()), 1000
-
-  end_game: ->
-    console.log('end')
+    app.timer = setInterval ( -> app.show_time()), 1000
 
   show_time: ->
     minutes = Math.floor(seconds/60)
     secs = seconds - (minutes * 60)
     $('#time').text("0#{minutes} : #{secs}")
     seconds -= 1
+    if seconds < 0
+      clearInterval(app.timer)
+      app.end_game()
+
+
+  end_game: ->
+    console.log('end')
+    settings =
+      dataType: 'script'
+      type: 'get'
+      url: "/end_game"
+    $.ajax(settings)
 
   new_game_form: ->
     settings =

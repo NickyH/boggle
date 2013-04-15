@@ -1,9 +1,16 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Aldrich); /*clock font*/
 
 *
 {
   font-family: 'Roboto Condensed', sans-serif;
   color: #BDB9BA;
+
+}
+
+a
+{
+  text-decoration: none;
 }
 
 #topspacer
@@ -29,17 +36,48 @@
   border: none;
 }
 
-.gamebuttons
+.invitebuttons
+{
+  background-color: #F53D54;
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  box-shadow: 4px 4px 1px #999;
+  border: none;
+  border-radius: 10px;
+}
+
+.homebuttons.adj
 {
   background-color: #40E365;
-  width: 200px;
+  width: auto;
   height: 50px;
   margin-top: 0;
   display: inline-block;
   float: left;
   text-align: center;
   vertical-align: middle;
-  font-size: 17px;
+  font-size: 20px;
+  box-shadow: 4px 4px 1px #999;
+  border: none;
+}
+
+.gamebuttons
+{
+  background-color: #40E365;
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
   box-shadow: 4px 4px 1px #999;
   border: none;
   border-radius: 10px;
@@ -67,6 +105,24 @@
   background-color: #211E01;
   padding: 10px;
   box-shadow: 4px 4px 1px #999;
+}
+
+.gamepanel
+{
+  background-color: #211E01;
+  padding: 30px;
+  box-shadow: 4px 4px 1px #999;
+  margin-top: 0;
+}
+
+.gamenav
+{
+  background-color: #211E01;
+  padding: 10px;
+  margin-bottom: 0;
+  margin-top: 30px;
+  box-shadow: 4px 4px 1px #999;
+
 }
 
 .tile{
@@ -196,4 +252,89 @@ input.formback
 .hide
 {
   display: none;
+}
+
+#copyright
+{
+  display: inline-block;
+  float: left;
+  margin-top: 0;
+}
+
+.recordtable
+{
+  color: black;
+  border: none;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.recordtable td
+{
+  min-width: 15em;
+  text-align: left;
+  min-height: 2em;
+}
+
+.recordtable th
+{
+  min-width: 10em;
+  text-align: left;
+  font-weight: bolder;
+  font-size: 1.1em;
+  color: #04BF9D;
+}
+
+#gameheader
+{
+  color: #00A19A;
+  font-size: 2em;
+  margin-top: 0.7em;
+  text-align: center;
+  display: inline-block;
+  width: auto;
+  text-indent: 20%;
+}
+
+#time
+{
+  color: #F5FCD0;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 2em;
+  display: inline-block;
+  width: 4em;
+  margin-left: 2em;
+}
+
+#score
+{
+  color: #F5FCD0;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 2em;
+  display: block;
+  width: 5em;
+  float: left;
+  text-align: left;
+}
+
+.word_enter_text
+{
+  float: left;
+  display: inline-block;
+  color: #F5FCD0;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.singleword
+{
+  font-size: 1em;
+  line-height: 1em;
+
+}
+
+.is_taken
+{
+  color: red;
 }

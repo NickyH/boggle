@@ -16,15 +16,17 @@ ActiveRecord::Schema.define(:version => 20130413171429) do
   create_table "answers", :force => true do |t|
     t.string  "word"
     t.boolean "is_valid"
+    t.boolean "is_taken", :default => true
     t.integer "game_id"
     t.integer "user_id"
   end
 
   create_table "games", :force => true do |t|
     t.string  "name"
-    t.integer "score"
+    t.integer "score",          :default => 0
     t.string  "best_word"
     t.string  "current_player"
+    t.string  "letters"
     t.boolean "is_active"
     t.integer "user_id"
   end

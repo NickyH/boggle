@@ -12,23 +12,29 @@
     .tile= 'L'
     .tile= 'E'
     .tile= ''
+    .tile= ''
+    .tile= ''
+    .tile= ''
+    .tile= ''
+    .tile= ''
+    .tile= ''
+    .tile= ''
     .tile= 'R'
     .tile= 'U'
     .tile= 'L'
     .tile= 'E'
     .tile= 'S'
+    .tile= link_to('>', '#')
     .tile= ''
-    .tile= 'R'
-    .tile= 'E'
-    .tile= 'G'
-    .tile= 'I'
     .tile= 'S'
-    .tile= 'T'
-    .tile= 'E'
-    .tile= 'R'
-    .tile= ''
-    .tile= ''
-    .tile= ''
+    .tile= 'I'
+    .tile= 'G'
+    .tile= 'N'
+    .tile= 'U'
+    .tile= 'P'
+    .tile= link_to('>', new_user_path, :remote => true)
+
+
 
 
   .large-3.columns
@@ -48,10 +54,12 @@
         .large-4.columns
 
       - else
-        .small-4.columns.large-centered
-          = link_to('Welcome back' + @auth.username, games_path, :class => 'button radius tiny')
-        .small-4.columns.large-centered
-          = link_to('Logout', login_path, :method => 'post', :class => 'button radius tiny')
+        .small-3.columns
+        .small-6.columns.large-centered
+          = link_to(@auth.username + "'s Games", games_path, :class => 'button homebuttons adj')
+          = link_to('Logout', login_path, :method => 'post', :class => 'button homebuttons')
+        .small-3.columns
+
 
 .row
   #form

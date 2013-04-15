@@ -1,0 +1,29 @@
+:javascript
+  var pusher = null;
+  pusher = new Pusher("#{Pusher.key}");
+  pusher.subscribe("#{params[:name]}");
+  app.bind_events();
+
+#main
+  .row
+    .large-12.small-12.columns.gamenav
+      #start= link_to("Start!", '/start', :class => 'button gamebuttons', :remote => true)
+      #invite= link_to('Invite', invite_path, :class => 'button invitebuttons', :remote => true)
+      #gameheader= @auth.current_game.name.upcase
+      #time= '3:00'
+
+  .row.gamepanel.header
+    .large-4.columns
+    .large-4.columns
+      #tiles
+        = render 'games/tiles_blank'
+    .large-4.columns
+      #word_list
+        = render 'games/answers'
+
+
+
+.row
+  #form
+
+#end_game

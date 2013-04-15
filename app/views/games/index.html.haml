@@ -4,7 +4,7 @@
       #username= link_to(@auth.username + ' | logout', '/login', :method => 'post', :class => 'logout')
   .large-12.columns
     - if @auth.games
-      %table
+      %table.recordtable
         %th Game
         %th Score
         %th Best Word
