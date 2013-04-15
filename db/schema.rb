@@ -14,35 +14,38 @@
 ActiveRecord::Schema.define(:version => 20130413171429) do
 
   create_table "answers", :force => true do |t|
-    t.string  "word"
-    t.boolean "is_valid"
-    t.boolean "is_taken", :default => true
-    t.integer "game_id"
-    t.integer "user_id"
+    t.string   "word"
+    t.boolean  "is_valid"
+    t.boolean  "is_taken",   :default => false
+    t.integer  "game_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "games", :force => true do |t|
-    t.string  "name"
-    t.integer "score",          :default => 0
-    t.string  "best_word"
-    t.string  "current_player"
-    t.string  "letters"
-    t.boolean "is_active"
-    t.integer "user_id"
+    t.string   "name"
+    t.string   "best_word"
+    t.string   "letters"
+    t.boolean  "is_active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "games_users", :id => false, :force => true do |t|
-    t.integer "game_id"
-    t.integer "user_id"
+  create_table "results", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "score",      :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string  "username"
-    t.string  "email"
-    t.string  "password_digest"
-    t.integer "high_score",      :default => 0
-    t.string  "channel"
-    t.boolean "is_online",       :default => false
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.integer  "high_score",      :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end

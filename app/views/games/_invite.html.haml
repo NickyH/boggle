@@ -1,0 +1,12 @@
+#formin
+  .row
+    .large-4.columns
+    .large-4.columns.large-centered
+      = form_tag sendtxt_path, :method => 'post', :remote => true do
+        = label_tag "Friend's name"
+        = text_field_tag 'name', nil, :autofocus => true, :class => 'formback'
+        = label_tag "Friend's phone"
+        = text_field_tag 'phone', nil, :class => 'formback'
+        = link_to 'Cancel', '#', :'data-clear-form' => true, :class =>  'button cancel'
+        = submit_tag 'Enter', :class =>  'button submit'
+    .large-4.columns

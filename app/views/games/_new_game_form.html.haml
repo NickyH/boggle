@@ -4,7 +4,7 @@
     .large-4.columns.large-centered
       = form_tag games_path, :method => 'post' do
         = label_tag 'Game Name'
-        = text_field_tag :name, nil, :autofocus => true, :class => 'formback'
+        #enterchannel= text_field_tag :name, nil, :autofocus => true, :class => 'formback'
         = link_to 'Cancel', '#', :'data-clear-form' => true, :class =>  'button cancel'
         = submit_tag 'Enter', :class =>  'button submit'
     .large-4.columns

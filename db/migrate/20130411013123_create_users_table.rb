@@ -5,8 +5,7 @@ class CreateUsersTable < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.integer :high_score, :default => 0
-      t.string :channel
-      t.boolean :is_online, :default => false
+      t.timestamps
     end
   end
 end

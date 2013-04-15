@@ -1,12 +1,12 @@
-seconds = 10
 window.app =
+  seconds: 60
   pusher: null
   channel: null
-  selected_channel: null
   document_ready: ->
     app.token = $('#auth_token').data('auth-token')
     $('#form').on('click', 'a[data-clear-form]', app.clear_form)
     $('.word_enter').on('keypress', 'text', app.word_enter)
+
 
   word_enter: (e) ->
     e.preventDefault
@@ -24,9 +24,22 @@ window.app =
     $('#form').slideUp()
     $('#homebuttons').show()
 
+  enter_channel: (name) ->
+    name = $('#enterchannel').val()
+    console.log(name)
+    app.pusher.subscribe(name)
+    app.selected_channel = name
+
   bind_events: ->
-    channel.bind('select_channel', app.select_channel)
     channel.bind('refresh_words', app.refresh_words)
+    channel.bind('start_game', app.start_game)
+
+  start_game: (name) ->
+    settings =
+      dataType: 'script'
+      type: "get"
+      url: "/games/start_game/#{name}"
+    $.ajax(settings)
 
   refresh_words: ->
     settings =
@@ -39,11 +52,11 @@ window.app =
     app.timer = setInterval ( -> app.show_time()), 1000
 
   show_time: ->
-    minutes = Math.floor(seconds/60)
-    secs = seconds - (minutes * 60)
+    minutes = Math.floor(app.seconds/60)
+    secs = app.seconds - (minutes * 60)
     $('#time').text("0#{minutes} : #{secs}")
-    seconds -= 1
-    if seconds < 0
+    app.seconds -= 1
+    if app.seconds < 0
       clearInterval(app.timer)
       app.end_game()
 

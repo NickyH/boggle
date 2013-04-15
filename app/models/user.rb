@@ -7,17 +7,13 @@
 #  email           :string(255)
 #  password_digest :string(255)
 #  high_score      :integer          default(0)
-#  channel         :string(255)
-#  is_online       :boolean          default(FALSE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation, :high_score, :channel, :is_online
+  attr_accessible :username, :email, :password, :password_confirmation, :high_score
   has_secure_password
-  has_many :games
-  has_many :answers
-
-  def current_game
-    self.games.where(:is_active => true).last
-  end
+  has_many :results
+  has_many :games, :through => :results
 end

@@ -4,17 +4,32 @@ class GamesController < ApplicationController
   end
   def create
     name = (params[:name]).downcase
-    game = Game.where(:name => name, :is_active => true).first_or_create
-    @auth.games.each {|game| game.is_active = false}
-    game.is_active = true
-    @auth.games << game
-    redirect_to "/games/#{game.name}"
+    games = Game.where(:name => name, :is_active => true)
+
+    games.each do |game|
+      game.is_active = false
+      game.save
+    end
+
+    game = Game.create(name: name, is_active: true)
+
+    game.users << @auth
+
+    redirect_to("/games/#{game.name}")
   end
   def start
+    game = Game.where(name: params[:name]).first
     letters = [['R', 'I', 'F', 'O', 'B', 'X'], ['I', 'F', 'E', 'H', 'E', 'Y'], ['D', 'E', 'N', 'O', 'W', 'S'], ['U', 'T', 'O', 'K', 'N', 'D'], ['H', 'M', 'S', 'R', 'A', 'O'], ['L', 'U', 'P', 'E', 'T', 'S'], ['A', 'C', 'I', 'T', 'O', 'A'], ['Y', 'L', 'G', 'K', 'U', 'E'], ['Q', 'B', 'M', 'J', 'O', 'A'], ['E', 'H', 'I', 'S', 'P', 'N'], ['V', 'E', 'T', 'I', 'G', 'N'], ['B', 'A', 'L', 'I', 'Y', 'T'], ['E', 'Z', 'A', 'V', 'N', 'D'], ['R', 'A', 'L', 'E', 'S', 'C'], ['U', 'W', 'I', 'L', 'R', 'G'], ['P', 'A', 'C', 'E', 'M', 'D']]
     @letters = (letters.map{ |d| d.shuffle.first }).shuffle
-    @auth.current_game.letters = @letters.join
-    @auth.current_game.update_attributes(:letters => @letters.join)
+
+    game.letters = @letters.join
+    game.save
+
+    Pusher.trigger(game.name, 'start_game', game.name)
+  end
+  def start_game
+    game = Game.where(name: params[:name]).first
+    @letters = game.letters
   end
   def answers
 
@@ -58,13 +73,12 @@ class GamesController < ApplicationController
     @answers = @auth.current_game.answers.where(:username => @auth.username)
     @score = @auth.current_game.score.where(:username => @auth.username)
   end
-  end
   def new_game_form
   end
   def show
     redirect_to root_path if @auth.nil?
-    game = Game.where(:name => params[:name]).first
-    Pusher.trigger(game.name, 'select_channel', @auth.username)
+    @game = Game.where(:name => params[:name]).first
+    @game.users << @auth if @game.users.exclude?(@auth)
   end
   def invite
 

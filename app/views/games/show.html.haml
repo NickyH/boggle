@@ -1,15 +1,14 @@
-:javascript
-  var pusher = null;
-  pusher = new Pusher("#{Pusher.key}");
-  pusher.subscribe("#{params[:name]}");
-  app.bind_events();
+%script
+  app.pusher = new Pusher('4265009735b51af74a68')
+  = "app.channel = app.pusher.subscribe('#{@game.name}')"
+  app.channel.bind('start_game', app.start_game)
 
 #main
   .row
     .large-12.small-12.columns.gamenav
-      #start= link_to("Start!", '/start', :class => 'button gamebuttons', :remote => true)
+      #start= link_to("Start!", "/start/#{@game.name}", :class => 'button gamebuttons', :remote => true)
       #invite= link_to('Invite', invite_path, :class => 'button invitebuttons', :remote => true)
-      #gameheader= @auth.current_game.name.upcase
+      #gameheader= @game.name
       #time= '3:00'
 
   .row.gamepanel.header
@@ -20,8 +19,6 @@
     .large-4.columns
       #word_list
         = render 'games/answers'
-
-
 
 .row
   #form

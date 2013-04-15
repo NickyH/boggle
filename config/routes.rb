@@ -12,9 +12,10 @@ Words::Application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
-  get '/start' => 'games#start'
+  get '/start/:name' => 'games#start'
   post '/add_word' => 'games#add_word'
   get '/invite' => 'games#invite'
   post '/sendtxt' => 'games#sendtxt'
   get '/new_game_form' => 'games#new_game_form'
+  get'/games/start_game/:name' => 'games#start_game'
 end

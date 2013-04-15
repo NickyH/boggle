@@ -1,4 +1,4 @@
-#score= "SCORE: #{@auth.current_game.score}"
+#score= "SCORE: #{Result.where("game_id = #{@game.id} AND user_id = #{@auth.id}").first.score}"
 
 
 = form_tag '/add_word', :remote => true do
