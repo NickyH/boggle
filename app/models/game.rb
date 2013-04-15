@@ -13,7 +13,6 @@
 
 class Game < ActiveRecord::Base
   attr_accessible :name, :best_word, :letters, :is_active
-  has_many :answers
   has_many :results
   has_many :users, :through => :results
 end

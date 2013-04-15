@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20130413171429) do
     t.string   "word"
     t.boolean  "is_valid"
     t.boolean  "is_taken",   :default => false
-    t.integer  "game_id"
+    t.integer  "result_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end

@@ -6,6 +6,8 @@ Words::Application.routes.draw do
   resources :games, only: [:index, :create]
   get '/games/:name' => 'games#show'
   get '/games/:name/end_game' => 'games#end_game'
+  get '/games/refresh_words/:name' => 'games#refresh_words'
+
 
 
   get '/login' => 'session#new'

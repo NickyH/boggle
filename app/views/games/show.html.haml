@@ -2,6 +2,7 @@
   app.pusher = new Pusher('4265009735b51af74a68')
   = "app.channel = app.pusher.subscribe('#{@game.name}')"
   app.channel.bind('start_game', app.start_game)
+  app.channel.bind('refresh_words', app.refresh_words)
 
 #main
   .row

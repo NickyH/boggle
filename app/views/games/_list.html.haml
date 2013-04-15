@@ -1,6 +1,7 @@
--if @answers.present?
-  - @answers.each do |answer|
-    - if answer.is_taken == true
-      %p.singleword.is_taken= answer.word.upcase
-    - else
-      %p.singleword= answer.word.upcase
+- @result.answers.each do |answer|
+  - if !answer.is_valid
+    %p.bad= answer.word.upcase
+  - elsif answer.is_taken
+    %p.taken= answer.word.upcase
+  -else
+    %p.good= answer.word.upcase

@@ -8,11 +8,11 @@
         %th Game
         %th Score
         %th Best Word
-        - @auth.games.each do |game|
+        - @auth.results.each do |result|
           %tr
-            %td= game.name
-            %td= game.score
-            %td= game.best_word
+            %td= result.game.name
+            %td= result.score
+            %td= result.game.best_word
 
 
 

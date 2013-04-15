@@ -35,62 +35,53 @@ class GamesController < ApplicationController
 
   end
   def add_word
-    score = 0
-    answer = Answer.create(word: params[:words])
-    a = answer.word.split('')
-    l = @auth.current_game.letters.split('')
-    valid = true
-    a.each do |letter|
-      if l.include?(letter.upcase) && valid = true
-        valid = true
-        answer.is_valid = true
-      else
-        valid = false
-        answer.is_valid = false
+    game = Game.where(:name => params[:name]).first
+    answer = Answer.create(word: params[:words].upcase, is_valid: true)
+
+    myletters = answer.word.split('')
+    letters = game.letters.split('')
+
+    myletters.each {|l| answer.is_valid = false if letters.exclude?(l)}
+    result = Result.where(game_id: game.id, user_id: @auth.id).first
+
+    results = Result.where(game_id: game.id)
+    is_dup = results.map(&:answers).flatten.map(&:word).include?(answer.word)
+
+    if is_dup
+      answer.is_taken = true
+      duplicates = results.map(&:answers).flatten.select{|a| a.word == answer.word}
+      duplicates.each do |dup|
+        dup.is_taken = true
+        dup.save
       end
     end
-    if answer.is_valid == true && answer.word.length > 2
-      game = @auth.current_game
-      all_words = game.users.map(&:answers).flatten.map(&:word)
-      match_words = all_words.where(:word => answer.word)
-      match_words.each do |match|
-        match.is_taken = true
-      end
-      Pusher.trigger(game.name, 'refresh_words', '')
-    else
-      if answer.word.length > 2 && answer.is_valid == true
-        @auth.current_game.answers << answer
-        score = @auth.current_game.score + answer.word.length - 2
-        @answers = @auth.current_game.answers
-        @auth.current_game.update_attributes(score: score) if score != 0
-      end
-    end
-  end
-  def refresh_words
-    @auth.current_game.answers << answer
-    score = @auth.current_game.score + answer.word.length - 2
-    @auth.current_game.update_attributes(score: score) if score != 0
-    @answers = @auth.current_game.answers.where(:username => @auth.username)
-    @score = @auth.current_game.score.where(:username => @auth.username)
-  end
-  def new_game_form
-  end
-  def show
-    redirect_to root_path if @auth.nil?
-    @game = Game.where(:name => params[:name]).first
-    @game.users << @auth if @game.users.exclude?(@auth)
-  end
-  def invite
 
-  end
-  def sendtxt
-    name = params[:name]
-    body = "Hi #{name}, you've been invited by #{@auth.username} to join in a game of Boggle. Just login and join the game #{@auth.current_game.name}"
-    phone = params[:phone]
-    client = Twilio::REST::Client.new(ENV['TW_SID'], ENV['TW_TOK'])
-    client.account.sms.messages.create(:from => '+16468635581', :to => phone, :body => body)
-  end
-  def end_game
+    result.answers << answer
+    Pusher.trigger(game.name, 'refresh_words', game.name)
+    render :nothing => true
+end
+def refresh_words
+  game = Game.where(:name => params[:name]).first
+  @result = Result.where(game_id: game.id, user_id: @auth.id).first
+end
+def new_game_form
+end
+def show
+  redirect_to root_path if @auth.nil?
+  @game = Game.where(:name => params[:name]).first
+  @game.users << @auth if @game.users.exclude?(@auth)
+end
+def invite
 
-  end
+end
+def sendtxt
+  name = params[:name]
+  body = "Hi #{name}, you've been invited by #{@auth.username} to join in a game of Boggle. Just login and join the game #{@auth.current_game.name}"
+  phone = params[:phone]
+  client = Twilio::REST::Client.new(ENV['TW_SID'], ENV['TW_TOK'])
+  client.account.sms.messages.create(:from => '+16468635581', :to => phone, :body => body)
+end
+def end_game
+
+end
 end

@@ -1,5 +1,5 @@
 window.app =
-  seconds: 60
+  seconds: 180
   pusher: null
   channel: null
   document_ready: ->
@@ -41,11 +41,11 @@ window.app =
       url: "/games/start_game/#{name}"
     $.ajax(settings)
 
-  refresh_words: ->
+  refresh_words: (name) ->
     settings =
       dataType: 'script'
       type: "get"
-      url: "/games/refresh_words"
+      url: "/games/refresh_words/#{name}"
     $.ajax(settings)
 
   start_timer: ->
