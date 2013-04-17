@@ -7,6 +7,7 @@ gem 'haml'
 gem 'bcrypt-ruby'
 gem 'twilio-ruby'
 gem 'pusher'
+gem "wordnik"
 
 group :assets do
   gem 'sass-rails'

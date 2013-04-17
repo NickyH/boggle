@@ -9,15 +9,15 @@
     .large-12.small-12.columns.gamenav
       #start= link_to("Start!", "/start/#{@game.name}", :class => 'button gamebuttons', :remote => true)
       #invite= link_to('Invite', invite_path, :class => 'button invitebuttons', :remote => true)
-      #gameheader= @game.name
-      #time= '3:00'
+      #gameheader= @game.name.capitalize
+      #time= '0:00'
 
+#main2
   .row.gamepanel.header
-    .large-4.columns
     .large-4.columns
       #tiles
         = render 'games/tiles_blank'
-    .large-4.columns
+    .large-6.columns
       #word_list
         = render 'games/answers'
 

@@ -10,9 +10,9 @@
         %th Best Word
         - @auth.results.each do |result|
           %tr
-            %td= result.game.name
+            %td= result.game.name.capitalize
             %td= result.score
-            %td= result.game.best_word
+            %td= result.game.best_word.capitalize
 
 
 

@@ -1,0 +1,6 @@
+.large-4.columns
+  #username2= link_to(@auth.username + ' | logout', '/login', :method => 'post', :class => 'logout')
+.large-4.columns
+  .gameover= "GAME OVER"
+.large-4.columns
+  #backtoresults= link_to('Back to results', '/games', :class => 'button gamebuttons')

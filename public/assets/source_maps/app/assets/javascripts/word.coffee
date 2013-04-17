@@ -60,7 +60,6 @@ window.app =
       clearInterval(app.timer)
       app.end_game()
 
-
   end_game: ->
     console.log('end')
     settings =

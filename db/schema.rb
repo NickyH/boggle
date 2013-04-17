@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(:version => 20130413171429) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
-    t.string   "best_word"
+    t.string   "best_word",  :default => "na"
     t.string   "letters"
     t.boolean  "is_active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "results", :force => true do |t|

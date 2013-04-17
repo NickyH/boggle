@@ -14,4 +14,5 @@
 class Answer < ActiveRecord::Base
   attr_accessible :word, :is_valid, :is_taken, :game_id
   belongs_to :result
+
 end

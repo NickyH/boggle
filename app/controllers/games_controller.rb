@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   end
   def create
     name = (params[:name]).downcase
+    name = name.gsub(" ", "").squish
     games = Game.where(:name => name, :is_active => true)
 
     games.each do |game|
@@ -38,6 +39,15 @@ class GamesController < ApplicationController
     game = Game.where(:name => params[:name]).first
     answer = Answer.create(word: params[:words].upcase, is_valid: true)
 
+    word = answer.word.to_s.downcase
+    answer.is_valid = false if answer.word.length < 3
+    answer.save
+    if answer.is_valid == true
+      answer.is_valid = Wordnik.word.get_definitions(word).any?
+      answer.save
+    end
+
+    # start dup search across all players words
     myletters = answer.word.split('')
     letters = game.letters.split('')
 
@@ -52,11 +62,25 @@ class GamesController < ApplicationController
       duplicates = results.map(&:answers).flatten.select{|a| a.word == answer.word}
       duplicates.each do |dup|
         dup.is_taken = true
+        dup.result.score -= 1
         dup.save
       end
     end
 
+    # getting scores for words greater than 2
+    if answer.word.length > 4 && answer.is_valid == true
+      result.score = result.score + answer.word.length + 2
+    elsif answer.word.length < 5 && answer.is_valid == true
+      result.score = result.score + 1
+      result.save
+    end
+
+    # checking for best_word
+    game.best_word = answer.word if answer.word.length > game.best_word.length
+    game.save
+
     result.answers << answer
+
     Pusher.trigger(game.name, 'refresh_words', game.name)
     render :nothing => true
 end
@@ -82,6 +106,5 @@ def sendtxt
   client.account.sms.messages.create(:from => '+16468635581', :to => phone, :body => body)
 end
 def end_game
-
 end
 end

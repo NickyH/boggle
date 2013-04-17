@@ -8,4 +8,6 @@ class HomeController < ApplicationController
     @letters = (letters.map{ |d| d.shuffle.first }).shuffle
 
   end
+  def rules
+  end
 end

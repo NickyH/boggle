@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  best_word  :string(255)
+#  best_word  :string(255)      default("na")
 #  letters    :string(255)
 #  is_active  :boolean
 #  created_at :datetime         not null

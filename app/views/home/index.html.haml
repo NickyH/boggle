@@ -4,46 +4,15 @@
 
 .row.toprowmain.header
   .large-3.columns
-  .large-6.small-6.columns.large-centered.tileer
+  .large-6.small-6.columns.large-centered.header
     .tile= 'B'
     .tile= 'O'
     .tile= 'G'
     .tile= 'G'
     .tile= 'L'
     .tile= 'E'
-    .tile= ''
-    .tile= ''
-    .tile= ''
-    .tile= ''
-    .tile= ''
-    .tile= ''
-    .tile= ''
-    .tile= ''
-    .tile= 'R'
-    .tile= 'U'
-    .tile= 'L'
-    .tile= 'E'
-    .tile= 'S'
-    .tile= link_to('>', '#')
-    .tile= ''
-    .tile= 'S'
-    .tile= 'I'
-    .tile= 'G'
-    .tile= 'N'
-    .tile= 'U'
-    .tile= 'P'
-    .tile= link_to('>', new_user_path, :remote => true)
-
-
-
-
-  .large-3.columns
-
-
-
-  .large-2.columns
-
-.row
+    / .mysubhead= 'Play boggle with your friends online'
+.row.bottomrow.header
   .large-12.small-12.columns
     .row
       - if @auth.nil?
@@ -59,10 +28,13 @@
           = link_to(@auth.username + "'s Games", games_path, :class => 'button homebuttons adj')
           = link_to('Logout', login_path, :method => 'post', :class => 'button homebuttons')
         .small-3.columns
+  .rulelink= link_to('>', '/rules', :remote => true)
+  .large-12.columns
+    .row
+      #form
+      #rules
 
 
-.row
-  #form
 
 
   #nav

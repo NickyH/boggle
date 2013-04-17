@@ -5,7 +5,6 @@
 {
   font-family: 'Roboto Condensed', sans-serif;
   color: #BDB9BA;
-
 }
 
 a
@@ -23,17 +22,27 @@ a
 
 .homebuttons
 {
-  background-color: #40E365;
-  width: 150px;
+  background-color: #90FEC0;
+  display: inline-block;
+  width: 100px;
+  float: left;
+  box-shadow: 1px 1px 1px #DEDEDE;
+  border: none;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: #00141C;
+}
+
+.homebuttons a
+{
+  width: 100px;
   height: 50px;
   margin-top: 0;
-  display: inline-block;
-  float: left;
   text-align: center;
   vertical-align: middle;
   font-size: 20px;
-  box-shadow: 4px 4px 1px #999;
-  border: none;
+  color: #00141C;
 }
 
 .invitebuttons
@@ -47,7 +56,7 @@ a
   text-align: center;
   vertical-align: middle;
   font-size: 15px;
-  box-shadow: 4px 4px 1px #999;
+  box-shadow: 2px 2px 1px #999;
   border: none;
   border-radius: 10px;
 }
@@ -78,7 +87,7 @@ a
   text-align: center;
   vertical-align: middle;
   font-size: 15px;
-  box-shadow: 4px 4px 1px #999;
+  box-shadow: 2px 2px 1px #999;
   border: none;
   border-radius: 10px;
 }
@@ -98,6 +107,7 @@ a
   background-color: #211E01;
   padding: 50px;
   box-shadow: 4px 4px 1px #999;
+  margin-bottom: 0;
 }
 
 .toprow
@@ -105,6 +115,14 @@ a
   background-color: #211E01;
   padding: 10px;
   box-shadow: 4px 4px 1px #999;
+}
+
+.bottomrow
+{
+  background-color: #211E01;
+  padding: 50px;
+  box-shadow: 4px 4px 1px #999;
+  margin-top: 0;
 }
 
 .gamepanel
@@ -173,6 +191,12 @@ input.formback
 {
   background-color: #C7E2F7;
   width: 80%;
+}
+
+input.formback2
+{
+  background-color: #C7E2F7;
+  width: 100%;
 }
 
 .cancel
@@ -313,8 +337,8 @@ input.formback
   font-size: 2em;
   display: block;
   width: 5em;
-  float: left;
-  text-align: left;
+  float: right;
+  text-align: right;
 }
 
 .word_enter_text
@@ -327,14 +351,99 @@ input.formback
   margin-bottom: 10px;
 }
 
-.singleword
+.good
 {
   font-size: 1em;
-  line-height: 1em;
+  color: green;
+  display: inline-block;
+  float: left;
+  line-height: 1.4em;
+}
+
+.bad
+{
+  font-size: 1em;
+  color: red;
+  display: inline-block;
+  float: left;
+  line-height: 1.4em;
 
 }
 
-.is_taken
+.taken
 {
-  color: red;
+  font-size: 1em;
+  text-decoration: line-through;
+  display: inline-block;
+  float: left;
+  line-height: 1.4em;
+
+}
+
+#maxheight
+{
+  max-height: 500px;
+  max-width: 100%;
+}
+
+.gameover
+{
+  font-size: 3em;
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+}
+
+#backtoresults
+{
+  float: left;
+  text-align: left;
+  display: inline-block;
+}
+
+#username2
+{
+  float: left;
+}
+
+.rules
+{
+  color: white
+}
+
+.rulelink
+{
+  display: inline-block;
+  float: left;
+}
+
+.mysubhead
+{
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+ul
+{
+    -moz-column-count: 4;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 20px;
+    column-count: 4;
+    column-gap: 20px;
+    height: auto;
+}
+
+ul li
+{
+  list-style: none;
+}
+
+.allwords
+{
+  float: left;
+  display: block;
+  width: 100%;
+  line-height: 20px;
 }
