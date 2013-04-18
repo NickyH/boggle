@@ -1,39 +1,38 @@
-.large-12.small-6.columns.large-centered.tileheader
-  - if @letters.present?
-    %table#cube
-      %tr
-        %td
-          %a.tile.square{:'data-row' => 1, :'data-col' => 1}= @letters[0]
-        %td
-          %a.tile.square{:'data-row' => 1, :'data-col' => 2}= @letters[1]
-        %td
-          %a.tile.square{:'data-row' => 1, :'data-col' => 3}= @letters[2]
-        %td
-          %a.tile.square{:'data-row' => 1, :'data-col' => 4}= @letters[3]
-      %tr
-        %td
-          %a.tile.square{:'data-row' => 2, :'data-col' => 1}= @letters[4]
-        %td
-          %a.tile.square{:'data-row' => 2, :'data-col' => 2}= @letters[5]
-        %td
-          %a.tile.square{:'data-row' => 2, :'data-col' => 3}= @letters[6]
-        %td
-          %a.tile.square{:'data-row' => 2, :'data-col' => 4}= @letters[7]
-      %tr
-        %td
-          %a.tile.square{:'data-row' => 3, :'data-col' => 1}= @letters[8]
-        %td
-          %a.tile.square{:'data-row' => 3, :'data-col' => 2}= @letters[9]
-        %td
-          %a.tile.square{:'data-row' => 3, :'data-col' => 3}= @letters[10]
-        %td
-          %a.tile.square{:'data-row' => 3, :'data-col' => 4}= @letters[11]
-      %tr
-        %td
-          %a.tile.square{:'data-row' => 4, :'data-col' => 1}= @letters[12]
-        %td
-          %a.tile.square{:'data-row' => 4, :'data-col' => 2}= @letters[13]
-        %td
-          %a.tile.square{:'data-row' => 4, :'data-col' => 3}= @letters[14]
-        %td
-          %a.tile.square{:'data-row' => 4, :'data-col' => 4}= @letters[15]
+- if @letters.present?
+  %table#cube
+    %tr
+      %td
+        %a.tile.square{:'data-row' => 1, :'data-col' => 1}= @letters[0]
+      %td
+        %a.tile.square{:'data-row' => 1, :'data-col' => 2}= @letters[1]
+      %td
+        %a.tile.square{:'data-row' => 1, :'data-col' => 3}= @letters[2]
+      %td
+        %a.tile.square{:'data-row' => 1, :'data-col' => 4}= @letters[3]
+    %tr
+      %td
+        %a.tile.square{:'data-row' => 2, :'data-col' => 1}= @letters[4]
+      %td
+        %a.tile.square{:'data-row' => 2, :'data-col' => 2}= @letters[5]
+      %td
+        %a.tile.square{:'data-row' => 2, :'data-col' => 3}= @letters[6]
+      %td
+        %a.tile.square{:'data-row' => 2, :'data-col' => 4}= @letters[7]
+    %tr
+      %td
+        %a.tile.square{:'data-row' => 3, :'data-col' => 1}= @letters[8]
+      %td
+        %a.tile.square{:'data-row' => 3, :'data-col' => 2}= @letters[9]
+      %td
+        %a.tile.square{:'data-row' => 3, :'data-col' => 3}= @letters[10]
+      %td
+        %a.tile.square{:'data-row' => 3, :'data-col' => 4}= @letters[11]
+    %tr
+      %td
+        %a.tile.square{:'data-row' => 4, :'data-col' => 1}= @letters[12]
+      %td
+        %a.tile.square{:'data-row' => 4, :'data-col' => 2}= @letters[13]
+      %td
+        %a.tile.square{:'data-row' => 4, :'data-col' => 3}= @letters[14]
+      %td
+        %a.tile.square{:'data-row' => 4, :'data-col' => 4}= @letters[15]

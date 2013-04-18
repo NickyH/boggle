@@ -3,8 +3,8 @@
     .large-4.columns
     .large-4.columns.large-centered
       = form_tag games_path, :method => 'post' do
-        = label_tag 'Game Name'
+        = label_tag "Name of new game or friend's game"
         #enterchannel= text_field_tag :name, nil, :autofocus => true, :class => 'formback'
         = link_to 'Cancel', '#', :'data-clear-form' => true, :class =>  'button cancel'
-        = submit_tag 'Enter', :class =>  'button submit'
+        = submit_tag 'Enter', :class =>  'button loginbutton'
     .large-4.columns

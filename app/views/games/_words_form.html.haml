@@ -1,8 +1,5 @@
-#score
-  = render 'score'
-
-= form_tag '/add_word', :remote => true do
-  .word_enter_text= label_tag 'Enter words and press enter'
-  = hidden_field_tag :name, params[:name]
-  .word_enter= text_field_tag 'words', nil, :class => 'formback2', :autofocus => true
-  .hide= submit_tag 'Enter'
+/ = form_tag '/add_word', :remote => true do
+/   .word_enter_text= label_tag 'Enter words and press enter'
+/   = hidden_field_tag :name, params[:name]
+/   .word_enter= text_field_tag 'words', nil, :class => 'formback2', :autofocus => true
+/   .hide= submit_tag 'Enter'

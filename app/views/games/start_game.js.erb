@@ -1,5 +1,17 @@
-$('.tile.shake').effect("shake", 3000);
 $('#tiles').empty().append('<%=j render 'games/tiles' %>');
 $('#start').hide();
 $('#pause').show();
 app.start_timer();
+
+$('.tile').jrumble({
+  x: 15,
+  y: 15,
+  rotation: 180,
+  speed: 30,
+  opacity: true,
+  opacityMin: 0.4
+  });
+
+$('.tile').trigger('startRumble');
+
+setTimeout(function(){$('.tile').trigger('stopRumble');},  1500);

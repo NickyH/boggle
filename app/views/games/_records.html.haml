@@ -1,0 +1,13 @@
+- if @auth.games
+  %table.recordtable
+    %th
+    %th Game
+    %th Score
+    %th Best Word
+    - @auth.results.each do |result|
+      - if !result.game.nil?
+        %tr
+          %td= link_to(image_tag('delete.png'), game_path(result.game_id), :method => 'delete', :id => 'smallcell', :remote => true, :class => 'imgdelete')
+          %td= result.game.name.capitalize
+          %td= result.score
+          %td= result.game.best_word.capitalize

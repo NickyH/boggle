@@ -1,1 +1,1 @@
-$('#form').empty().append('<%=j render 'games/invite' %>');
+$('#form').empty().append('<%=j render 'games/invite', :locals => { :gamename => @game.name } %>');

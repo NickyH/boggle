@@ -12,3 +12,12 @@ g2 = Game.create(name: 'MyTurnToWin', best_word: 'style', letters: 'ENRSBSTTLAMY
 g3 = Game.create(name: 'LetMeWin', best_word: 'posting', letters: 'LEVIIMTSGTOPDNHO')
 
 u1.games = [g1, g2, g3]
+
+r1 = Result.create(score: 15)
+r2 = Result.create(score: 21)
+r3 = Result.create(score: 12)
+
+
+g1.result = r1
+g2.result = r2
+g3.result = r3

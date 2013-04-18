@@ -4,22 +4,26 @@
   app.channel.bind('start_game', app.start_game)
   app.channel.bind('refresh_words', app.refresh_words)
 
-#main
+#main2
   .row
     .large-12.small-12.columns.gamenav
-      #start= link_to("Start!", "/start/#{@game.name}", :class => 'button gamebuttons', :remote => true)
-      #invite= link_to('Invite', invite_path, :class => 'button invitebuttons', :remote => true)
-      #gameheader= @game.name.capitalize
+      #start= link_to("Start!", "/start/#{@game.name}", :class => 'button startgamebutton', :remote => true)
+      #invite= link_to('Invite', "/invite/#{@game.name}", :class => 'button invitebuttons', :remote => true)
+      #stop= link_to('Quit', games_path, :class => 'button stopbutton')
+      #gameheader= @game.name.upcase
       #time= '0:00'
-
-#main2
-  .row.gamepanel.header
+  .row.gamepanel
     .large-4.columns
+      - users = @auth.games.last.users
+      .username= "Playing:"
+      - users.each do |user|
+        .username= user.username
       #tiles
         = render 'games/tiles_blank'
+      #submit_word
+        = link_to('Enter Word', '#', :'data-game-name' => @game.name, :remote => true, :class => 'button enterword')
     .large-6.columns
       #word_list
-        = render 'games/answers'
 
 .row
   #form

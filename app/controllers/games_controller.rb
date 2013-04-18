@@ -36,10 +36,10 @@ class GamesController < ApplicationController
 
   end
   def add_word
-    game = Game.where(:name => params[:name]).first
-    answer = Answer.create(word: params[:words].upcase, is_valid: true)
+    word = params[:word].join.downcase
+    game = Game.where(:name => params[:game]).first
+    answer = Answer.create(word: word.upcase, is_valid: true)
 
-    word = answer.word.to_s.downcase
     answer.is_valid = false if answer.word.length < 3
     answer.save
     if answer.is_valid == true
@@ -87,6 +87,7 @@ end
 def refresh_words
   game = Game.where(:name => params[:name]).first
   @result = Result.where(game_id: game.id, user_id: @auth.id).first
+  @letters = game.letters
 end
 def new_game_form
 end
@@ -96,15 +97,20 @@ def show
   @game.users << @auth if @game.users.exclude?(@auth)
 end
 def invite
-
+  @game = Game.where(:name => params[:name]).first
 end
 def sendtxt
   name = params[:name]
-  body = "Hi #{name}, you've been invited by #{@auth.username} to join in a game of Boggle. Just login and join the game #{@auth.current_game.name}"
+  body = "Hi #{name}, you've been invited by #{@auth.username} to join in a game of Boggle. Just login and join the game #{params[:game]}"
   phone = params[:phone]
   client = Twilio::REST::Client.new(ENV['TW_SID'], ENV['TW_TOK'])
   client.account.sms.messages.create(:from => '+16468635581', :to => phone, :body => body)
 end
 def end_game
+end
+def destroy
+  @game = Game.find(params[:id])
+  @game.results.delete
+  @game.delete
 end
 end

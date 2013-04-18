@@ -1,30 +1,15 @@
 .row.toprow.header
   .large-12.columns
+    #homeicon= link_to(image_tag('home_icon.png'), root_path)
     - if !@auth.nil?
       #username= link_to(@auth.username + ' | logout', '/login', :method => 'post', :class => 'logout')
+  .large-4.columns.large-centered
+    = link_to('New Game', new_game_form_path, :class => 'button newgamebutton', :remote => true)
   .large-12.columns
-    - if @auth.games
-      %table.recordtable
-        %th Game
-        %th Score
-        %th Best Word
-        - @auth.results.each do |result|
-          %tr
-            %td= result.game.name.capitalize
-            %td= result.score
-            %td= result.game.best_word.capitalize
+    #gameresults
+      = render 'records'
 
 
-
-.row
-  .large-12.small-12.columns
-    .row
-      - if !@auth.nil?
-        .large-4.columns
-          #username= link_to(@auth.username + ' | logout', '/login', :method => 'post', :class => 'logout')
-        .large-4.columns.large-centered
-          = link_to('Enter Game', new_game_form_path, :class => 'button gamebuttons', :remote => true)
-
-
-.row
-  #form
+  .row
+    .large-12.columns
+      #form

@@ -2,7 +2,7 @@
 
 #topspacer.hide-for-small
 
-.row.toprowmain.header
+.row.bottomrow.header
   .large-3.columns
   .large-6.small-6.columns.large-centered.header
     .tile= 'B'
@@ -12,7 +12,8 @@
     .tile= 'L'
     .tile= 'E'
     / .mysubhead= 'Play boggle with your friends online'
-.row.bottomrow.header
+  .large-3.columns
+
   .large-12.small-12.columns
     .row
       - if @auth.nil?
@@ -23,16 +24,15 @@
         .large-4.columns
 
       - else
-        .small-3.columns
-        .small-6.columns.large-centered
-          = link_to(@auth.username + "'s Games", games_path, :class => 'button homebuttons adj')
+        .small-4.columns
+        .small-4.columns.large-centered
+          = link_to("Games", games_path, :class => 'button homebuttons')
           = link_to('Logout', login_path, :method => 'post', :class => 'button homebuttons')
-        .small-3.columns
-  .rulelink= link_to('>', '/rules', :remote => true)
+        .small-4.columns
+  = link_to('About >', '/rules', :remote => true, :class => 'rulelink')
   .large-12.columns
     .row
       #form
-      #rules
 
 
 

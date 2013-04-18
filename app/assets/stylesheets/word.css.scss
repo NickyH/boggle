@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Aldrich); /*clock font*/
+@import url(http://fonts.googleapis.com/css?family=Sintony);
 
 *
 {
@@ -26,19 +27,35 @@ a
   display: inline-block;
   width: 100px;
   float: left;
-  box-shadow: 1px 1px 1px #DEDEDE;
+  box-shadow: 3px 3px 3px #777;
   border: none;
   margin-right: 10px;
   margin-left: 10px;
+  margin-top: 3em;
   border-radius: 5px;
   color: #00141C;
+}
+
+.homebuttons:hover
+{
+  background-color: #80C465;
+  display: inline-block;
+  width: 100px;
+  float: left;
+  box-shadow: 3px 3px 3px #999;
+  border: none;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 3em;
+  border-radius: 5px;
+  color: #00141C;
+  font-weight: bold;
 }
 
 .homebuttons a
 {
   width: 100px;
   height: 50px;
-  margin-top: 0;
   text-align: center;
   vertical-align: middle;
   font-size: 20px;
@@ -47,33 +64,80 @@ a
 
 .invitebuttons
 {
-  background-color: #F53D54;
-  width: 150px;
-  height: 40px;
+  background-color: #665EA1;
+  width: 90px;
+  height: 30px;
+  line-height: 10px;
   margin-top: 10px;
   display: inline-block;
   float: left;
   text-align: center;
   vertical-align: middle;
   font-size: 15px;
-  box-shadow: 2px 2px 1px #999;
+  box-shadow: 2px 2px 1px #444;
   border: none;
   border-radius: 10px;
+  color: black;
 }
 
-.homebuttons.adj
+.invitebuttons:hover
+{
+  background-color: #544FA1;
+  font-weight: bold;
+  box-shadow: 2px 2px 1px #999;
+  color: black;
+}
+
+.startgamebutton
 {
   background-color: #40E365;
-  width: auto;
-  height: 50px;
-  margin-top: 0;
+  width: 90px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 10px;
   display: inline-block;
   float: left;
   text-align: center;
   vertical-align: middle;
-  font-size: 20px;
-  box-shadow: 4px 4px 1px #999;
+  font-size: 15px;
+  box-shadow: 2px 2px 1px #444;
   border: none;
+  border-radius: 10px;
+  color: black;
+}
+
+.startgamebutton:hover
+{
+  background-color: #40E355;
+  font-weight: bold;
+  box-shadow: 2px 2px 1px #999;
+  color: black;
+}
+
+.stopbutton
+{
+  background-color: #FF4B57;
+  width: 90px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  box-shadow: 2px 2px 1px #444;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  margin-left: 15px;
+}
+
+.stopbutton:hover
+{
+  background-color: #AD5111;
+  color: black;
+  box-shadow: 2px 2px 1px #999;
 }
 
 .gamebuttons
@@ -87,9 +151,42 @@ a
   text-align: center;
   vertical-align: middle;
   font-size: 15px;
-  box-shadow: 2px 2px 1px #999;
+  box-shadow: 2px 2px 1px #444;
   border: none;
   border-radius: 10px;
+  color: black;
+}
+
+.gamebuttons:hover
+{
+  background-color: #40E355;
+  box-shadow: 2px 2px 1px #999;
+  color: black;
+}
+
+.newgamebutton
+{
+  background-color: #FF644F;
+  color: white;
+  width: 230px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  box-shadow: 3px 2px 1px #777;
+  border: none;
+  border-radius: 10px;
+}
+
+.newgamebutton:hover
+{
+  background-color: #FF194B;
+  font-weight: bold;
+  box-shadow: 3px 2px 1px #999;
 }
 
 .header
@@ -114,15 +211,15 @@ a
 {
   background-color: #211E01;
   padding: 10px;
-  box-shadow: 4px 4px 1px #999;
+  box-shadow: 10px 10px 10px #999;
 }
 
 .bottomrow
 {
   background-color: #211E01;
   padding: 50px;
-  box-shadow: 4px 4px 1px #999;
-  margin-top: 0;
+  box-shadow: 10px 10px 10px #999;
+  margin-top: 3em;
 }
 
 .gamepanel
@@ -174,6 +271,37 @@ a
   box-shadow: 0 1px 0 #757573, 1px 2px 0 #757573, 2px 3px 1px #757573;
 }
 
+.selected_letter{
+  display:block;
+  float:left;
+  width:54px;
+  height:54px;
+  line-height:54px;
+  border: none;
+  margin:3px;
+  text-indent:18px;
+  border-radius: 15px;
+  color:#000;
+  text-shadow: -1px -1px 1px rgb(40,40,40);
+  font-family: "NewsGoth Cn BT", Optima-Thin, "MS Gothic";
+  font-size:40px;
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    left top,
+    color-stop(0.5, rgb(250,70,60)),
+    color-stop(0.7, rgb(230,210,230))
+  );
+  background-image: -moz-linear-gradient(
+    right bottom,
+    rgb(222,196,139) 50%,
+    rgb(230,204,147) 70%
+  );
+  -moz-box-shadow:  0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
+  -webkit-box-shadow: 0 1px 0 #b69c63, 1px 2px 0 #b69c63, 2px 3px 1px #b69c63;
+  box-shadow: 0 1px 0 #4A4849, 1px 2px 0 #4A4849, 2px 3px 1px #4A4849;
+}
+
 
 .tileheader
 {
@@ -182,43 +310,70 @@ a
 
 #formin
 {
-  background-color: #598BF7;
+  background-color: #212830;
   padding: 15px;
   font-size: 20px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 1px #444;
+  border: 1px solid #38414D;
+
+}
+
+#formin label
+{
+  color: #C8D9B0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+
 }
 
 input.formback
 {
   background-color: #C7E2F7;
   width: 80%;
+  border-radius: 5px;
 }
 
 input.formback2
 {
   background-color: #C7E2F7;
   width: 100%;
+  border-radius: 5px;
+
 }
 
 .cancel
 {
-  background-color: #FF6813;
+  background-color: #AD2B98;
   width: 100px;
   height: 35px;
   margin-top: 0;
+  margin-right: 10px;
   display: inline-block;
   float: left;
   text-align: center;
   vertical-align: middle;
   font-size: 15px;
-  box-shadow: 2px 2px 1px #999;
+  box-shadow: 2px 2px 1px #444;
   border: none;
   text-decoration: none;
   border-radius: 5px;
+  color: black;
 }
 
-.submit
+.cancel:hover
 {
-  background-color: #40E365;
+  background-color: #731DA1;
+  font-weight: bold;
+  color: black;
+  box-shadow: 2px 2px 1px #999;
+
+}
+
+.loginbutton
+{
+  background-color: #90FEC0;
   width: 100px;
   height: 35px;
   margin-top: 0;
@@ -227,11 +382,19 @@ input.formback2
   text-align: center;
   vertical-align: middle;
   font-size: 15px;
-  box-shadow: 2px 2px 1px #999;
+  box-shadow: 2px 2px 1px #444;
   border: none;
   text-decoration: none;
   border-radius: 5px;
+  color: black;
+}
 
+.loginbutton:hover
+{
+  background-color: #80C465;
+  box-shadow: 2px 2px 1px #999;
+  color: black;
+  font-weight: bold;
 }
 
 .logout
@@ -243,7 +406,25 @@ input.formback2
   vertical-align: middle;
   font-size: 15px;
   text-decoration: none;
-  color: white;
+  color: #C8D9B0;
+}
+
+.logout:hover
+{
+  color: #C8D999;
+}
+
+.username
+{
+  margin-top: 0;
+  margin-right: 20px;
+  display: inline-block;
+  float: left;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 15px;
+  text-decoration: none;
+  color: #C8D9B0;
 }
 
 #cube
@@ -265,6 +446,8 @@ input.formback2
 {
   float: right;
   display: inline-block;
+  color: black;
+
 }
 
 #pause
@@ -295,14 +478,16 @@ input.formback2
 
 .recordtable td
 {
-  min-width: 15em;
+  width: 5em;
   text-align: left;
   min-height: 2em;
+  color: #C8D9B0;
+  border-bottom: 1px solid #C8D9B0;
 }
 
 .recordtable th
 {
-  min-width: 10em;
+  width: 10em;
   text-align: left;
   font-weight: bolder;
   font-size: 1.1em;
@@ -311,7 +496,7 @@ input.formback2
 
 #gameheader
 {
-  color: #00A19A;
+  color: #7FB5AD;
   font-size: 2em;
   margin-top: 0.7em;
   text-align: center;
@@ -328,6 +513,8 @@ input.formback2
   display: inline-block;
   width: 4em;
   margin-left: 2em;
+  float: right;
+  margin-top: 0.7em;
 }
 
 #score
@@ -337,7 +524,7 @@ input.formback2
   font-size: 2em;
   display: block;
   width: 5em;
-  float: right;
+  float: left;
   text-align: right;
 }
 
@@ -384,6 +571,7 @@ input.formback2
 {
   max-height: 500px;
   max-width: 100%;
+  float: left;
 }
 
 .gameover
@@ -408,13 +596,23 @@ input.formback2
 
 .rules
 {
-  color: white
+  color: white;
+  font-size: 17px;
+  font-family: 'Sintony', sans-serif;
+  line-height: 22px;
 }
 
 .rulelink
 {
   display: inline-block;
   float: left;
+  color: #FF9175;
+  font-size: 12px;
+}
+
+.rulelink:hover
+{
+  color: #EB6560;
 }
 
 .mysubhead
@@ -446,4 +644,84 @@ ul li
   display: block;
   width: 100%;
   line-height: 20px;
+}
+
+#gameresults table
+{
+  background-color: #211E01;
+}
+
+.imgdelete img
+{
+  width: 1em;
+  opacity: 0.6;
+}
+
+.imgdelete img:hover
+{
+  opacity: 1;
+}
+
+#smallcell td
+{
+  min-width: 1em;
+  text-align: left;
+  min-height: 2em;
+  color: #C8D9B0;
+  border-bottom: 1px solid #C8D9B0;
+}
+
+#homeicon img
+{
+  width: 2.3em;
+  opacity: 0.9;
+  margin-top: 10px;
+  display: inline-block;
+  float: left;
+}
+
+#homeicon img:hover
+{
+  width: 2.3em;
+  opacity: 1;
+  margin-top: 10px;
+  display: inline-block;
+  float: left;
+}
+
+.enterword
+{
+  background-color: #FF644F;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 17px;
+  box-shadow: 3px 2px 1px #777;
+  border: none;
+  border-radius: 10px;
+  color: black;
+
+}
+
+.enterword:hover
+{
+  background-color: #FF6977;
+  font-weight: bold;
+  color: black;
+}
+
+a.button.enterword
+{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+
+}
+
+.inline-list
+{
+  width: 50%;
 }

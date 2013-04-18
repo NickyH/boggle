@@ -1,10 +1,14 @@
-#maxheight
-  %ul
-    - @result.answers.reverse.each do |answer|
-      %li.allwords
-        - if !answer.is_valid
-          .bad= answer.word.upcase
-        - elsif answer.is_taken
-          .taken= answer.word.upcase
-        - else
-          .good= answer.word.upcase
+#score
+  = render 'score'
+  %hr
+.row
+  #maxheight
+    %ul
+      - @result.answers.reverse.each do |answer|
+        %li.allwords
+          - if !answer.is_valid
+            .bad= answer.word.upcase
+          - elsif answer.is_taken
+            .taken= answer.word.upcase
+          - else
+            .good= answer.word.upcase

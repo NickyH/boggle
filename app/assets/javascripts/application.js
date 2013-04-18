@@ -9,4 +9,5 @@
 //= require raphael-2.1.0.min
 //= require morris.min
 //= require jquery-ui-1.10.2.custom.min
+//= require jquery.jrumble.1.3.min
 //= require word.js
