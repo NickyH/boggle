@@ -20,4 +20,5 @@ Words::Application.routes.draw do
   post '/sendtxt' => 'games#sendtxt'
   get '/new_game_form' => 'games#new_game_form'
   get'/games/start_game/:name' => 'games#start_game'
+  get '/games/refresh_selection/refresh/:game' => 'games#refresh_selection'
 end

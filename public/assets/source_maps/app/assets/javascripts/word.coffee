@@ -1,5 +1,5 @@
 window.app =
-  seconds: 180
+  seconds: 10
   pusher: null
   channel: null
   letters: []
@@ -36,6 +36,14 @@ window.app =
           console.log(letter, row, col)
           app.letters.push(letter)
 
+  refresh_selection: ->
+    game = $('#gameheader').text()
+    settings =
+      dataType: 'script'
+      type: "get"
+      url: "/games/refresh_selection/refresh/#{game}"
+    $.ajax(settings)
+
   submit_word: (e) ->
     game = $(this).data('game-name')
     console.log(game)
@@ -52,6 +60,7 @@ window.app =
     app.letters = []
     app.rows = []
     app.cols = []
+    app.refresh_selection()
 
   clear_form: (e) ->
     e.preventDefault()
@@ -94,6 +103,9 @@ window.app =
     if app.seconds < 0
       clearInterval(app.timer)
       app.end_game()
+
+  quit_game: ->
+    clearInterval(app.timer)
 
   end_game: ->
     console.log('end')
