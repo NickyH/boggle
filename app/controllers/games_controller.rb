@@ -35,11 +35,6 @@ class GamesController < ApplicationController
   def answers
 
   end
-  def refresh_selection
-    name = (params[:game]).downcase
-    game = Game.where(name: name).first
-    @letters = game.letters
-  end
   def add_word
     word = params[:word].join.downcase
     game = Game.where(:name => params[:game]).first
@@ -81,7 +76,7 @@ class GamesController < ApplicationController
     end
 
     # checking for best_word
-    game.best_word = answer.word if answer.word.length > game.best_word.length && answer.word.is_valid
+    game.best_word = answer.word if answer.word.length > game.best_word.length && answer.is_valid
     game.save
 
     result.answers << answer

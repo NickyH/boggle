@@ -20,6 +20,8 @@
         .username= user.username
       #tiles
         = render 'games/tiles_blank'
+      #cancel_word
+        = link_to_function('x', 'app.reset_selection()', :class => 'cancelword')
       #submit_word
         = link_to('Enter Word', '#', :'data-game-name' => @game.name, :remote => true, :class => 'button enterword')
     .large-6.columns

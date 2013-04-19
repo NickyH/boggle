@@ -1,17 +1,15 @@
 window.app =
-  seconds: 10
+  seconds: 60
   pusher: null
   channel: null
   letters: []
   rows: []
   cols: []
   document_ready: ->
-    console.log('doc ready')
     app.token = $('#auth_token').data('auth-token')
     $('#form').on('click', 'a[data-clear-form]', app.clear_form)
     $('#tiles').on('click', '.square', app.select_letter)
     $('#submit_word').on('click', 'a[data-game-name]', app.submit_word)
-    $('#start').hover('.shake').trigger('startRumble')
 
   select_letter: ->
     if app.rows.length == 0
@@ -33,24 +31,18 @@ window.app =
           app.cols.push(col)
           $(this).addClass('selected_letter')
           letter = $(this).text()
-          console.log(letter, row, col)
           app.letters.push(letter)
 
-  refresh_selection: ->
-    game = $('#gameheader').text()
-    settings =
-      dataType: 'script'
-      type: "get"
-      url: "/games/refresh_selection/refresh/#{game}"
-    $.ajax(settings)
+  reset_selection: ->
+    $('.square.selected_letter').removeClass('selected_letter')
+    app.letters = []
+
 
   submit_word: (e) ->
+    $('.square.selected_letter').removeClass('selected_letter')
     game = $(this).data('game-name')
-    console.log(game)
-    console.log('hello')
     e.preventDefault
     word = app.letters
-    console.log(word)
     settings =
       dataType: 'script'
       type: "post"
@@ -60,7 +52,6 @@ window.app =
     app.letters = []
     app.rows = []
     app.cols = []
-    app.refresh_selection()
 
   clear_form: (e) ->
     e.preventDefault()
@@ -70,7 +61,6 @@ window.app =
 
   enter_channel: (name) ->
     name = $('#enterchannel').val()
-    console.log(name)
     app.pusher.subscribe(name)
     app.selected_channel = name
 
@@ -108,7 +98,6 @@ window.app =
     clearInterval(app.timer)
 
   end_game: ->
-    console.log('end')
     settings =
       dataType: 'script'
       type: 'get'

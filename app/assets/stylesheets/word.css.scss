@@ -289,8 +289,8 @@ a
     linear,
     right bottom,
     left top,
-    color-stop(0.5, rgb(250,70,60)),
-    color-stop(0.7, rgb(230,210,230))
+    color-stop(0.5, rgb(144,254,192)),
+    color-stop(0.7, rgb(130,210,170))
   );
   background-image: -moz-linear-gradient(
     right bottom,
@@ -523,7 +523,7 @@ input.formback2
   font-family: 'Aldrich', sans-serif;
   font-size: 2em;
   display: block;
-  width: 5em;
+  width: 100%;
   float: left;
   text-align: right;
 }
@@ -570,7 +570,7 @@ input.formback2
 #maxheight
 {
   max-height: 500px;
-  max-width: 100%;
+  width: 100%;
   float: left;
 }
 
@@ -625,11 +625,11 @@ input.formback2
 ul
 {
     -moz-column-count: 4;
-    -moz-column-gap: 20px;
+    -moz-column-gap: 10%;
     -webkit-column-count: 4;
-    -webkit-column-gap: 20px;
+    -webkit-column-gap: 10%;
     column-count: 4;
-    column-gap: 20px;
+    column-gap: 10%;
     height: auto;
 }
 
@@ -641,7 +641,6 @@ ul li
 .allwords
 {
   float: left;
-  display: block;
   width: 100%;
   line-height: 20px;
 }
@@ -691,7 +690,7 @@ ul li
 
 .enterword
 {
-  background-color: #FF644F;
+  background-color: #40E365;
   height: 40px;
   margin-top: 10px;
   margin-bottom: 30px;
@@ -703,14 +702,32 @@ ul li
   border: none;
   border-radius: 10px;
   color: black;
+}
 
+a.button.enterword
+{
+  width: 100px;
 }
 
 .enterword:hover
 {
-  background-color: #FF6977;
+  background-color: #40E444;
   font-weight: bold;
   color: black;
+}
+
+.cancelword
+{
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 14px;
+  color: red;
+
+}
+
+.cancelword:hover
+{
+  font-weight: bold;
 }
 
 a.button.enterword
