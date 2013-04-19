@@ -1,5 +1,5 @@
 window.app =
-  seconds: 60
+  seconds: 5
   pusher: null
   channel: null
   letters: []
